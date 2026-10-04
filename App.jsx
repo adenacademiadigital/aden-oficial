@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { 
   Play, 
@@ -28,6 +27,7 @@ export default function App() {
   const [formData, setFormData] = useState({ name: '', email: '', phone: '' });
   const [submitted, setSubmitted] = useState(false);
   const [downloadUrl, setDownloadUrl] = useState('#');
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   // Mapeo exacto de recursos gratuitos a sus URLs reales en Google Drive
   const leadMagnetUrls = {
@@ -38,16 +38,46 @@ export default function App() {
     'Guía Gerencial: 5 Procesos Clave que Toda Empresa Debe Automatizar con IA': 'https://drive.google.com/file/d/1bM5hWb9JQ-Oq7-Y0vdAd46VYAF_PF8Ie/view?usp=sharing'
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setDownloadUrl(leadMagnetUrls[selectedLeadMagnet] || '#');
-    setSubmitted(true);
+    setIsSubmitting(true);
+
+    const targetUrl = leadMagnetUrls[selectedLeadMagnet] || '#';
+    setDownloadUrl(targetUrl);
+
+    // Integración con el endpoint del API de Forms de HubSpot (Portal ID: 51905190)
+    try {
+      const hubspotEndpoint = 'https://api.hsforms.com/submissions/v3/integration/submit/51905190/masterclass-aden';
+      await fetch(hubspotEndpoint, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          fields: [
+            { name: 'firstname', value: formData.name },
+            { name: 'email', value: formData.email },
+            { name: 'mobilephone', value: formData.phone },
+            { name: 'recurso_solicitado', value: selectedLeadMagnet }
+          ],
+          context: {
+            pageUri: window.location.href,
+            pageName: 'Academia ADEN - Portal Oficial'
+          }
+        }),
+      });
+    } catch (error) {
+      console.log('Envío procesado.');
+    } finally {
+      setIsSubmitting(false);
+      setSubmitted(true);
+    }
   };
 
   return (
     <div className="min-h-screen bg-slate-950 text-slate-100 font-sans selection:bg-cyan-500 selection:text-slate-950 relative">
       
-      {/* BOTÓN FLOTANTE DE WHATSAPP (Ajustado z-index y posición limpia) */}
+      {/* BOTÓN FLOTANTE DE WHATSAPP */}
       <a 
         href="https://wa.me/573215467418?text=Hola%20Academia%20ADEN,%20quisiera%20recibir%20informaci%C3%B3n" 
         target="_blank" 
@@ -76,7 +106,7 @@ export default function App() {
             <a href="#programas" className="hover:text-cyan-400 transition">Marketing Digital</a>
             <a href="#formula-ia" className="hover:text-cyan-400 transition">Fórmula IA</a>
             <a href="#ebook-hotmart" className="hover:text-cyan-400 transition">Ebook Hotmart</a>
-            <a href="#institucional" className="hover:text-cyan-400 transition">Institucional</a>
+            <a href="#institucional" className="hover:text-cyan-400 transition">Identidad Institucional</a>
             <a href="#recursos" className="hover:text-cyan-400 transition">Recursos Gratuitos</a>
           </nav>
 
@@ -132,7 +162,9 @@ export default function App() {
           <div className="text-center max-w-3xl mx-auto mb-12">
             <span className="text-cyan-400 text-xs font-extrabold uppercase tracking-widest">Soluciones de Agencia B2B</span>
             <h2 className="text-3xl sm:text-4xl font-black text-white mt-2">Demos e Infraestructura por Sector</h2>
-            <p className="text-slate-400 mt-3 text-sm sm:text-base">Explora nuestros prototipos interactivos en vivo diseñados para captación automatizada y aceleración comercial.</p>
+            <p className="text-slate-300 mt-4 text-base sm:text-lg leading-relaxed">
+              Diseñamos e implementamos sitios web de alto rendimiento, sistemas de captación de clientes y flujos comerciales automatizados con Inteligencia Artificial adaptados a la dinámica operativa de cada sector.
+            </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -211,6 +243,7 @@ export default function App() {
                 <span className="bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 text-xs font-bold px-3 py-1 rounded-full">
                   120 Horas | 12 Módulos
                 </span>
+                <span className="text-slate-400 text-xs font-medium">Marketing Digital</span>
               </div>
               <h3 className="text-2xl font-black text-white mb-4">
                 Programa Profesional en Marketing Digital, Ventas y Negocios Online
@@ -244,7 +277,7 @@ export default function App() {
                 <span className="bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 text-xs font-bold px-3 py-1 rounded-full flex items-center gap-1.5">
                   <Bot className="w-3.5 h-3.5" /> 120 Horas | 12 Módulos
                 </span>
-                <span className="text-slate-400 text-xs">Inteligencia Artificial</span>
+                <span className="text-slate-400 text-xs font-medium">Inteligencia Artificial</span>
               </div>
               <h3 className="text-2xl font-black text-white mb-4">
                 Programa Profesional en Inteligencia Artificial y Automatización de Negocios - Fórmula IA
@@ -317,7 +350,6 @@ export default function App() {
             <p className="text-slate-400 text-sm mt-3">Conoce nuestro Proyecto Educativo Institucional (PEI) y la documentación oficial de Academia ADEN.</p>
           </div>
 
-          {/* MISIÓN Y VISIÓN LITERALES DEL PEI */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
             <div className="bg-slate-900 border border-slate-800 rounded-3xl p-8 relative hover:border-cyan-500/40 transition">
               <div className="w-12 h-12 bg-cyan-500/10 text-cyan-400 rounded-2xl flex items-center justify-center mb-6">
@@ -342,7 +374,6 @@ export default function App() {
             </div>
           </div>
 
-          {/* DOCUMENTOS INSTITUCIONALES Y DOSSIER */}
           <div className="bg-slate-950 border border-slate-800 rounded-3xl p-8 sm:p-10 shadow-2xl">
             <h3 className="text-xl font-bold text-white mb-6 flex items-center gap-2">
               <FileText className="w-5 h-5 text-cyan-400" /> Dossier y Documentos Normativos Institucionales
@@ -482,9 +513,10 @@ export default function App() {
 
                 <button 
                   type="submit"
-                  className="w-full bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white font-bold py-4 rounded-xl transition shadow-lg shadow-cyan-500/25 flex items-center justify-center gap-2"
+                  disabled={isSubmitting}
+                  className="w-full bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white font-bold py-4 rounded-xl transition shadow-lg shadow-cyan-500/25 flex items-center justify-center gap-2 disabled:opacity-50"
                 >
-                  <Send className="w-4 h-4" /> Solicitar Descarga de la Guía
+                  <Send className="w-4 h-4" /> {isSubmitting ? 'Procesando registro...' : 'Solicitar Descarga de la Guía'}
                 </button>
               </form>
             )}
@@ -492,7 +524,7 @@ export default function App() {
         </div>
       </section>
 
-      {/* 8. PIE DE PÁGINA CON REDES OFICIALES DE ADEN (Ubicación limpia sin solapamiento) */}
+      {/* 8. PIE DE PÁGINA CON REDES OFICIALES DE ADEN */}
       <footer className="border-t border-slate-800 bg-slate-950 py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-8">
           <div>
@@ -503,44 +535,46 @@ export default function App() {
             <p className="text-slate-500 text-xs">© {new Date().getFullYear()} Academia ADEN. Todos los derechos reservados.</p>
           </div>
 
-          {/* Iconos desplazados hacia el centro/izquierda para que el botón flotante no los tape jamás */}
-          <div className="flex items-center space-x-6 pr-0 md:pr-24">
-            <a 
-              href="https://www.instagram.com/aden_academia" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="text-slate-400 hover:text-cyan-400 transition"
-              title="Instagram Oficial ADEN"
-            >
-              <Instagram className="w-5 h-5" />
-            </a>
-            <a 
-              href="https://www.facebook.com/share/1GiFomgXHG/" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="text-slate-400 hover:text-cyan-400 transition"
-              title="Facebook Oficial ADEN"
-            >
-              <Facebook className="w-5 h-5" />
-            </a>
-            <a 
-              href="https://www.tiktok.com/@adenacademia" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="text-slate-400 hover:text-cyan-400 transition"
-              title="TikTok Oficial ADEN"
-            >
-              <Video className="w-5 h-5" />
-            </a>
-            <a 
-              href="https://www.linkedin.com/in/henrry-david-arroyo-lopez-97a874411" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="text-slate-400 hover:text-cyan-400 transition"
-              title="LinkedIn Henrry Arroyo"
-            >
-              <Linkedin className="w-5 h-5" />
-            </a>
+          <div className="flex flex-col sm:flex-row items-center gap-3 pr-0 md:pr-24">
+            <span className="text-slate-400 text-xs font-semibold uppercase tracking-wider">Síguenos en nuestras redes:</span>
+            <div className="flex items-center space-x-5">
+              <a 
+                href="https://www.instagram.com/aden_academia" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-slate-400 hover:text-cyan-400 transition"
+                title="Instagram Oficial ADEN"
+              >
+                <Instagram className="w-5 h-5" />
+              </a>
+              <a 
+                href="https://www.facebook.com/share/1GiFomgXHG/" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-slate-400 hover:text-cyan-400 transition"
+                title="Facebook Oficial ADEN"
+              >
+                <Facebook className="w-5 h-5" />
+              </a>
+              <a 
+                href="https://www.tiktok.com/@adenacademia" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-slate-400 hover:text-cyan-400 transition"
+                title="TikTok Oficial ADEN"
+              >
+                <Video className="w-5 h-5" />
+              </a>
+              <a 
+                href="https://www.linkedin.com/in/henrry-david-arroyo-lopez-97a874411" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-slate-400 hover:text-cyan-400 transition"
+                title="LinkedIn Henrry Arroyo"
+              >
+                <Linkedin className="w-5 h-5" />
+              </a>
+            </div>
           </div>
         </div>
       </footer>

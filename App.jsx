@@ -14,9 +14,7 @@ import {
   Facebook, 
   Linkedin, 
   Video,
-  FileText,
-  Mic,
-  Zap
+  Sparkle
 } from 'lucide-react';
 
 export default function App() {
@@ -34,7 +32,6 @@ export default function App() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Asignar el enlace de descarga correspondiente
     setDownloadUrl(leadMagnetUrls[selectedLeadMagnet] || '#');
     setSubmitted(true);
   };
@@ -67,7 +64,7 @@ export default function App() {
             href="#recursos" 
             className="bg-cyan-500 hover:bg-cyan-400 text-slate-950 px-5 py-2.5 rounded-xl font-bold text-sm transition shadow-lg shadow-cyan-500/20"
           >
-            Guías Gratuitas
+            Recursos Gratuitos
           </a>
         </div>
       </header>
@@ -89,7 +86,7 @@ export default function App() {
               Explorar Programas
             </a>
             <a href="#agencia" className="border border-slate-700 hover:border-slate-500 text-slate-200 text-center font-semibold px-7 py-4 rounded-xl transition bg-slate-900/50">
-              Servicios B2B
+              Agencia B2B
             </a>
           </div>
         </div>
@@ -113,45 +110,63 @@ export default function App() {
           <div className="text-center max-w-3xl mx-auto mb-12">
             <span className="text-cyan-400 text-xs font-extrabold uppercase tracking-widest">Soluciones de Agencia B2B</span>
             <h2 className="text-3xl sm:text-4xl font-black text-white mt-2">Demos e Infraestructura por Sector</h2>
-            <p className="text-slate-400 mt-3 text-sm sm:text-base">Explora nuestros prototipos interactivos diseñados para captación automatizada y aceleración comercial.</p>
+            <p className="text-slate-400 mt-3 text-sm sm:text-base">Explora nuestros prototipos interactivos en vivo diseñados para captación automatizada y aceleración comercial.</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 flex flex-col justify-between hover:border-cyan-500/50 transition">
+            {/* Demo 1: Productos de Belleza */}
+            <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 flex flex-col justify-between hover:border-cyan-500/50 transition shadow-lg">
               <div>
-                <div className="w-12 h-12 bg-emerald-500/10 text-emerald-400 rounded-xl flex items-center justify-center mb-4">
-                  <Briefcase className="w-6 h-6" />
+                <div className="w-12 h-12 bg-pink-500/10 text-pink-400 rounded-xl flex items-center justify-center mb-4">
+                  <Sparkles className="w-6 h-6" />
                 </div>
-                <h3 className="text-xl font-bold text-white mb-2">Sector Salud y Odontología</h3>
-                <p className="text-slate-400 text-sm mb-6">Embudos de alta conversión con gestión automática de citas y calificación de pacientes.</p>
+                <h3 className="text-xl font-bold text-white mb-2">Productos de Belleza & Cosmética</h3>
+                <p className="text-slate-400 text-sm mb-6">Plataforma e-commerce y vitrina digital optimizada para marcas de belleza, cuidado personal y cosmética.</p>
               </div>
-              <a href="#" className="inline-flex items-center justify-between w-full bg-slate-800 hover:bg-slate-700 text-cyan-400 font-semibold px-4 py-3 rounded-xl transition text-sm">
+              <a 
+                href="https://aura-skin-blush.vercel.app/" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-between w-full bg-slate-800 hover:bg-slate-700 text-cyan-400 font-semibold px-4 py-3 rounded-xl transition text-sm"
+              >
                 Ver Demo Interactivo <ExternalLink className="w-4 h-4" />
               </a>
             </div>
 
-            <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 flex flex-col justify-between hover:border-cyan-500/50 transition">
+            {/* Demo 2: Clinicas Odontologicas */}
+            <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 flex flex-col justify-between hover:border-cyan-500/50 transition shadow-lg">
               <div>
                 <div className="w-12 h-12 bg-cyan-500/10 text-cyan-400 rounded-xl flex items-center justify-center mb-4">
-                  <Target className="w-6 h-6" />
+                  <Briefcase className="w-6 h-6" />
                 </div>
-                <h3 className="text-xl font-bold text-white mb-2">Sector Mobiliario y Fábricas</h3>
-                <p className="text-slate-400 text-sm mb-6">Sistemas B2B para captación de distribuidores, cotizaciones y catálogos inteligentes.</p>
+                <h3 className="text-xl font-bold text-white mb-2">Clínicas y Consultorios Odontológicos</h3>
+                <p className="text-slate-400 text-sm mb-6">Sistema de captación de pacientes, valoración digital y agendamiento directo a WhatsApp.</p>
               </div>
-              <a href="#" className="inline-flex items-center justify-between w-full bg-slate-800 hover:bg-slate-700 text-cyan-400 font-semibold px-4 py-3 rounded-xl transition text-sm">
+              <a 
+                href="https://demo-cl-nica-sonrisas-est-tica.vercel.app/" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-between w-full bg-slate-800 hover:bg-slate-700 text-cyan-400 font-semibold px-4 py-3 rounded-xl transition text-sm"
+              >
                 Ver Demo Interactivo <ExternalLink className="w-4 h-4" />
               </a>
             </div>
 
-            <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 flex flex-col justify-between hover:border-cyan-500/50 transition">
+            {/* Demo 3: Centros de Estetica */}
+            <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 flex flex-col justify-between hover:border-cyan-500/50 transition shadow-lg">
               <div>
-                <div className="w-12 h-12 bg-blue-500/10 text-blue-400 rounded-xl flex items-center justify-center mb-4">
-                  <BookOpen className="w-6 h-6" />
+                <div className="w-12 h-12 bg-emerald-500/10 text-emerald-400 rounded-xl flex items-center justify-center mb-4">
+                  <Target className="w-6 h-6" />
                 </div>
-                <h3 className="text-xl font-bold text-white mb-2">Sector Educación y Academias</h3>
-                <p className="text-slate-400 text-sm mb-6">Plataformas educativas integradas con Hotmart, pasarelas y automatización de matrículas.</p>
+                <h3 className="text-xl font-bold text-white mb-2">Centros de Estética y Bienestar</h3>
+                <p className="text-slate-400 text-sm mb-6">Sitio web especializado en servicios estéticos, catálogo de procedimientos y embudo de conversión.</p>
               </div>
-              <a href="#" className="inline-flex items-center justify-between w-full bg-slate-800 hover:bg-slate-700 text-cyan-400 font-semibold px-4 py-3 rounded-xl transition text-sm">
+              <a 
+                href="https://demo-estetica-aden.netlify.app/" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-between w-full bg-slate-800 hover:bg-slate-700 text-cyan-400 font-semibold px-4 py-3 rounded-xl transition text-sm"
+              >
                 Ver Demo Interactivo <ExternalLink className="w-4 h-4" />
               </a>
             </div>

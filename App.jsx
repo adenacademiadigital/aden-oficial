@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react'; 
 import { Play, CheckCircle, ExternalLink, MessageCircle, ArrowRight, BookOpen, Building2, Download, ShieldCheck } from 'lucide-react';
 
 export default function AdenWebsite() {

@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { 
   Play, 
@@ -14,20 +15,27 @@ import {
   Facebook, 
   Linkedin, 
   Video,
-  MessageCircle
+  MessageCircle,
+  FileText,
+  ShieldCheck,
+  Compass,
+  Award,
+  Globe
 } from 'lucide-react';
 
 export default function App() {
-  const [selectedLeadMagnet, setSelectedLeadMagnet] = useState('Guía Práctica: Prompts de IA para Negocios');
+  const [selectedLeadMagnet, setSelectedLeadMagnet] = useState('Guía gratuita de cómo usar ChatGPT de forma profesional');
   const [formData, setFormData] = useState({ name: '', email: '', phone: '' });
   const [submitted, setSubmitted] = useState(false);
   const [downloadUrl, setDownloadUrl] = useState('#');
 
-  // Mapeo de recursos gratuitos a sus URLs de descarga directa
+  // Mapeo exacto de recursos gratuitos a sus URLs reales en Google Drive
   const leadMagnetUrls = {
-    'Guía Práctica: Prompts de IA para Negocios': '#descarga-prompts-ia',
-    'Plantilla de Funnel de Ventas B2B': '#descarga-funnel-b2b',
-    'Checklist: Auditoría de Campañas en Meta Ads': '#descarga-audit-meta'
+    'Guía gratuita de cómo usar Claude IA': 'https://drive.google.com/file/d/1GKDNT96Wtmqf-hQ0DpNnGbgjpk8OHXs8/view?usp=sharing',
+    'Guía gratuita de cómo usar ChatGPT de forma profesional': 'https://drive.google.com/file/d/1Pjye2yHhOoVUFYLu_4pG-eOhRp1sZ-kX/view?usp=sharing',
+    'Guía gratuita de cómo usar Amazon': 'https://drive.google.com/file/d/1rCFOOS-X6c7rKM11hQNkh_5veM4l-06u/view?usp=sharing',
+    'Guía gratuita de cómo usar Hotmart': 'https://drive.google.com/file/d/1uD78IUwEkQHVjTMQXLriOqEGuEvEw4LO/view?usp=sharing',
+    'Guía Gerencial: 5 Procesos Clave que Toda Empresa Debe Automatizar con IA': 'https://drive.google.com/file/d/1bM5hWb9JQ-Oq7-Y0vdAd46VYAF_PF8Ie/view?usp=sharing'
   };
 
   const handleSubmit = (e) => {
@@ -39,7 +47,7 @@ export default function App() {
   return (
     <div className="min-h-screen bg-slate-950 text-slate-100 font-sans selection:bg-cyan-500 selection:text-slate-950 relative">
       
-      {/* BOTÓN FLOTANTE DE WHATSAPP */}
+      {/* BOTÓN FLOTANTE DE WHATSAPP (Ajustado z-index y posición limpia) */}
       <a 
         href="https://wa.me/573215467418?text=Hola%20Academia%20ADEN,%20quisiera%20recibir%20informaci%C3%B3n" 
         target="_blank" 
@@ -51,7 +59,7 @@ export default function App() {
       </a>
 
       {/* 1. HEADER INSTITUCIONAL */}
-      <header className="border-b border-slate-800 bg-slate-900/80 backdrop-blur sticky top-0 z-50">
+      <header className="border-b border-slate-800 bg-slate-900/80 backdrop-blur sticky top-0 z-40">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
           <div className="flex items-center space-x-3">
             <div className="bg-gradient-to-r from-cyan-500 to-blue-600 p-2 rounded-xl shadow-lg shadow-cyan-500/20">
@@ -63,11 +71,12 @@ export default function App() {
             </div>
           </div>
           
-          <nav className="hidden md:flex space-x-8 text-sm font-medium text-slate-300">
+          <nav className="hidden lg:flex space-x-7 text-sm font-medium text-slate-300">
             <a href="#agencia" className="hover:text-cyan-400 transition">Agencia B2B</a>
             <a href="#programas" className="hover:text-cyan-400 transition">Marketing Digital</a>
             <a href="#formula-ia" className="hover:text-cyan-400 transition">Fórmula IA</a>
             <a href="#ebook-hotmart" className="hover:text-cyan-400 transition">Ebook Hotmart</a>
+            <a href="#institucional" className="hover:text-cyan-400 transition">Institucional</a>
             <a href="#recursos" className="hover:text-cyan-400 transition">Recursos Gratuitos</a>
           </nav>
 
@@ -127,7 +136,6 @@ export default function App() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {/* Demo 1: Productos de Belleza */}
             <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 flex flex-col justify-between hover:border-cyan-500/50 transition shadow-lg">
               <div>
                 <div className="w-12 h-12 bg-pink-500/10 text-pink-400 rounded-xl flex items-center justify-center mb-4">
@@ -146,7 +154,6 @@ export default function App() {
               </a>
             </div>
 
-            {/* Demo 2: Clinicas Odontologicas */}
             <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 flex flex-col justify-between hover:border-cyan-500/50 transition shadow-lg">
               <div>
                 <div className="w-12 h-12 bg-cyan-500/10 text-cyan-400 rounded-xl flex items-center justify-center mb-4">
@@ -165,7 +172,6 @@ export default function App() {
               </a>
             </div>
 
-            {/* Demo 3: Centros de Estetica */}
             <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 flex flex-col justify-between hover:border-cyan-500/50 transition shadow-lg">
               <div>
                 <div className="w-12 h-12 bg-emerald-500/10 text-emerald-400 rounded-xl flex items-center justify-center mb-4">
@@ -196,7 +202,6 @@ export default function App() {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
           
-          {/* Programa 1: Certificación Profesional */}
           <div className="bg-slate-900 border border-slate-800 rounded-3xl p-8 relative flex flex-col justify-between">
             <div className="absolute -top-3 right-8 bg-gradient-to-r from-cyan-500 to-blue-600 text-slate-950 text-xs font-black px-4 py-1 rounded-full uppercase">
               Programa Especializado
@@ -230,7 +235,6 @@ export default function App() {
             </a>
           </div>
 
-          {/* Programa 2: Fórmula IA */}
           <div id="formula-ia" className="bg-slate-900 border border-cyan-500/30 rounded-3xl p-8 relative flex flex-col justify-between shadow-xl shadow-cyan-950/40">
             <div className="absolute -top-3 right-8 bg-gradient-to-r from-cyan-500 to-blue-600 text-slate-950 text-xs font-black px-4 py-1 rounded-full uppercase">
               Programa Especializado
@@ -304,7 +308,83 @@ export default function App() {
         </div>
       </section>
 
-      {/* 6. FORMULARIO HUBSPOT - GUÍAS GRATUITAS Y DESCARGA DIRECTA */}
+      {/* 6. MARCO INSTITUCIONAL: MISIÓN, VISIÓN Y DOCUMENTOS ADEN */}
+      <section id="institucional" className="py-20 bg-slate-900/40 border-b border-slate-800">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <span className="text-cyan-400 text-xs font-extrabold uppercase tracking-widest">Identidad Institucional</span>
+            <h2 className="text-3xl sm:text-4xl font-black text-white mt-2">Fundamentos y Documentación Oficial</h2>
+            <p className="text-slate-400 text-sm mt-3">Conoce nuestro Proyecto Educativo Institucional (PEI) y la documentación oficial de Academia ADEN.</p>
+          </div>
+
+          {/* MISIÓN Y VISIÓN LITERALES DEL PEI */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+            <div className="bg-slate-900 border border-slate-800 rounded-3xl p-8 relative hover:border-cyan-500/40 transition">
+              <div className="w-12 h-12 bg-cyan-500/10 text-cyan-400 rounded-2xl flex items-center justify-center mb-6">
+                <Compass className="w-6 h-6" />
+              </div>
+              <h3 className="text-2xl font-extrabold text-white mb-4">Nuestra Misión</h3>
+              <p className="text-slate-300 text-base leading-relaxed italic">
+                "Formar emprendedores digitales altamente competentes, brindándoles herramientas prácticas, estrategias actualizadas y acompañamiento estructurado que les permita generar ingresos en el entorno digital de manera ética y sostenible."
+              </p>
+              <span className="block mt-4 text-xs font-bold uppercase tracking-wider text-cyan-400">— PEI Institucional ADEN 2026</span>
+            </div>
+
+            <div className="bg-slate-900 border border-slate-800 rounded-3xl p-8 relative hover:border-cyan-500/40 transition">
+              <div className="w-12 h-12 bg-blue-500/10 text-blue-400 rounded-2xl flex items-center justify-center mb-6">
+                <Globe className="w-6 h-6" />
+              </div>
+              <h3 className="text-2xl font-extrabold text-white mb-4">Nuestra Visión</h3>
+              <p className="text-slate-300 text-base leading-relaxed italic">
+                "Ser una academia referente en educación digital en habla hispana, reconocida por su enfoque práctico, sus resultados comprobables y su compromiso con la formación integral del emprendedor moderno."
+              </p>
+              <span className="block mt-4 text-xs font-bold uppercase tracking-wider text-cyan-400">— PEI Institucional ADEN 2026</span>
+            </div>
+          </div>
+
+          {/* DOCUMENTOS INSTITUCIONALES Y DOSSIER */}
+          <div className="bg-slate-950 border border-slate-800 rounded-3xl p-8 sm:p-10 shadow-2xl">
+            <h3 className="text-xl font-bold text-white mb-6 flex items-center gap-2">
+              <FileText className="w-5 h-5 text-cyan-400" /> Dossier y Documentos Normativos Institucionales
+            </h3>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+              
+              <a href="https://drive.google.com/file/d/1Rnq1AJiepIXsNSefRqYu5fTIjUi4xkOJ/view?usp=sharing" target="_blank" rel="noopener noreferrer" className="bg-slate-900 border border-slate-800 hover:border-cyan-500/50 p-4 rounded-xl flex items-center justify-between text-slate-200 text-sm font-semibold transition group">
+                <span className="flex items-center gap-2.5"><Award className="w-4 h-4 text-cyan-400" /> Dossier Institucional ADEN</span>
+                <ExternalLink className="w-4 h-4 text-slate-500 group-hover:text-cyan-400 transition" />
+              </a>
+
+              <a href="https://drive.google.com/file/d/15FF8S1RNOArJF6jiLcErrtn0luh9z7Yc/view?usp=sharing" target="_blank" rel="noopener noreferrer" className="bg-slate-900 border border-slate-800 hover:border-cyan-500/50 p-4 rounded-xl flex items-center justify-between text-slate-200 text-sm font-semibold transition group">
+                <span className="flex items-center gap-2.5"><FileText className="w-4 h-4 text-cyan-400" /> Presentación Institucional</span>
+                <ExternalLink className="w-4 h-4 text-slate-500 group-hover:text-cyan-400 transition" />
+              </a>
+
+              <a href="https://drive.google.com/file/d/15DYWnaRg3aM1RTqx5OW7DGFJPmwiC1fE/view?usp=sharing" target="_blank" rel="noopener noreferrer" className="bg-slate-900 border border-slate-800 hover:border-cyan-500/50 p-4 rounded-xl flex items-center justify-between text-slate-200 text-sm font-semibold transition group">
+                <span className="flex items-center gap-2.5"><ShieldCheck className="w-4 h-4 text-cyan-400" /> PEI Institucional 2026</span>
+                <ExternalLink className="w-4 h-4 text-slate-500 group-hover:text-cyan-400 transition" />
+              </a>
+
+              <a href="https://drive.google.com/file/d/1AMLwR-rdx3zpYEvEspMeR6fHC_FZ9Rp8/view?usp=sharing" target="_blank" rel="noopener noreferrer" className="bg-slate-900 border border-slate-800 hover:border-cyan-500/50 p-4 rounded-xl flex items-center justify-between text-slate-200 text-sm font-semibold transition group">
+                <span className="flex items-center gap-2.5"><CheckCircle className="w-4 h-4 text-cyan-400" /> Política de Certificación</span>
+                <ExternalLink className="w-4 h-4 text-slate-500 group-hover:text-cyan-400 transition" />
+              </a>
+
+              <a href="https://drive.google.com/file/d/1_ivtPqNOajqD7nO7CVJI6v8ixII9jRi-/view?usp=sharing" target="_blank" rel="noopener noreferrer" className="bg-slate-900 border border-slate-800 hover:border-cyan-500/50 p-4 rounded-xl flex items-center justify-between text-slate-200 text-sm font-semibold transition group">
+                <span className="flex items-center gap-2.5"><BookOpen className="w-4 h-4 text-cyan-400" /> Reglamento Académico</span>
+                <ExternalLink className="w-4 h-4 text-slate-500 group-hover:text-cyan-400 transition" />
+              </a>
+
+              <a href="https://drive.google.com/file/d/16fD6hzocU1FDDs-Q7VvIL7NUf9Cd3X0V/view?usp=sharing" target="_blank" rel="noopener noreferrer" className="bg-slate-900 border border-slate-800 hover:border-cyan-500/50 p-4 rounded-xl flex items-center justify-between text-slate-200 text-sm font-semibold transition group">
+                <span className="flex items-center gap-2.5"><FileText className="w-4 h-4 text-cyan-400" /> Términos de Servicio</span>
+                <ExternalLink className="w-4 h-4 text-slate-500 group-hover:text-cyan-400 transition" />
+              </a>
+
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 7. FORMULARIO HUBSPOT - GUÍAS GRATUITAS Y DESCARGA DIRECTA */}
       <section id="recursos" className="py-20 bg-slate-900 border-t border-slate-800">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
@@ -325,15 +405,16 @@ export default function App() {
                 </div>
                 <h3 className="text-2xl font-bold text-white mb-2">¡Tu Recurso está Listo!</h3>
                 <p className="text-slate-300 text-sm mb-6">
-                  Hemos procesado tu registro para <span className="text-cyan-400 font-semibold">"{selectedLeadMagnet}"</span>. Haz clic en el siguiente botón para iniciar la descarga inmediata:
+                  Hemos procesado tu registro para <span className="text-cyan-400 font-semibold">"{selectedLeadMagnet}"</span>. Haz clic en el siguiente botón para acceder al documento en Google Drive:
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
                   <a 
                     href={downloadUrl} 
-                    download
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white font-bold px-8 py-4 rounded-xl transition shadow-lg shadow-cyan-500/25 inline-flex items-center justify-center gap-2 text-sm"
                   >
-                    <Download className="w-4 h-4" /> Descargar Ahora
+                    <Download className="w-4 h-4" /> Abrir y Descargar Recurso <ExternalLink className="w-4 h-4" />
                   </a>
                   <button 
                     onClick={() => setSubmitted(false)}
@@ -354,9 +435,11 @@ export default function App() {
                     onChange={(e) => setSelectedLeadMagnet(e.target.value)}
                     className="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3.5 text-white focus:outline-none focus:border-cyan-500 text-sm"
                   >
-                    <option value="Guía Práctica: Prompts de IA para Negocios">Guía Práctica: Prompts de IA para Negocios</option>
-                    <option value="Plantilla de Funnel de Ventas B2B">Plantilla de Funnel de Ventas B2B</option>
-                    <option value="Checklist: Auditoría de Campañas en Meta Ads">Checklist: Auditoría de Campañas en Meta Ads</option>
+                    <option value="Guía gratuita de cómo usar Claude IA">Guía gratuita de cómo usar Claude IA</option>
+                    <option value="Guía gratuita de cómo usar ChatGPT de forma profesional">Guía gratuita de cómo usar ChatGPT de forma profesional</option>
+                    <option value="Guía gratuita de cómo usar Amazon">Guía gratuita de cómo usar Amazon</option>
+                    <option value="Guía gratuita de cómo usar Hotmart">Guía gratuita de cómo usar Hotmart</option>
+                    <option value="Guía Gerencial: 5 Procesos Clave que Toda Empresa Debe Automatizar con IA">GUÍA GERENCIAL: Los 5 Procesos Clave que Toda Empresa Debe Automatizar con IA este Año</option>
                   </select>
                 </div>
 
@@ -409,7 +492,7 @@ export default function App() {
         </div>
       </section>
 
-      {/* 7. PIE DE PÁGINA CON REDES OFICIALES DE ADEN */}
+      {/* 8. PIE DE PÁGINA CON REDES OFICIALES DE ADEN (Ubicación limpia sin solapamiento) */}
       <footer className="border-t border-slate-800 bg-slate-950 py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-8">
           <div>
@@ -420,7 +503,8 @@ export default function App() {
             <p className="text-slate-500 text-xs">© {new Date().getFullYear()} Academia ADEN. Todos los derechos reservados.</p>
           </div>
 
-          <div className="flex items-center space-x-6">
+          {/* Iconos desplazados hacia el centro/izquierda para que el botón flotante no los tape jamás */}
+          <div className="flex items-center space-x-6 pr-0 md:pr-24">
             <a 
               href="https://www.instagram.com/aden_academia" 
               target="_blank" 

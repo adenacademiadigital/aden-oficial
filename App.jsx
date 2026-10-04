@@ -14,7 +14,7 @@ import {
   Facebook, 
   Linkedin, 
   Video,
-  Sparkle
+  MessageCircle
 } from 'lucide-react';
 
 export default function App() {
@@ -37,8 +37,19 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100 font-sans selection:bg-cyan-500 selection:text-slate-950">
+    <div className="min-h-screen bg-slate-950 text-slate-100 font-sans selection:bg-cyan-500 selection:text-slate-950 relative">
       
+      {/* BOTÓN FLOTANTE DE WHATSAPP */}
+      <a 
+        href="https://wa.me/573215467418?text=Hola%20Academia%20ADEN,%20quisiera%20recibir%20informaci%C3%B3n" 
+        target="_blank" 
+        rel="noopener noreferrer"
+        className="fixed bottom-6 right-6 z-50 bg-emerald-500 hover:bg-emerald-400 text-white p-4 rounded-full shadow-2xl transition-all duration-300 hover:scale-110 flex items-center justify-center border border-emerald-400/40"
+        title="Contactar por WhatsApp"
+      >
+        <MessageCircle className="w-7 h-7 fill-current" />
+      </a>
+
       {/* 1. HEADER INSTITUCIONAL */}
       <header className="border-b border-slate-800 bg-slate-900/80 backdrop-blur sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
@@ -54,17 +65,19 @@ export default function App() {
           
           <nav className="hidden md:flex space-x-8 text-sm font-medium text-slate-300">
             <a href="#agencia" className="hover:text-cyan-400 transition">Agencia B2B</a>
-            <a href="#programas" className="hover:text-cyan-400 transition">Programas</a>
+            <a href="#programas" className="hover:text-cyan-400 transition">Marketing Digital</a>
             <a href="#formula-ia" className="hover:text-cyan-400 transition">Fórmula IA</a>
             <a href="#ebook-hotmart" className="hover:text-cyan-400 transition">Ebook Hotmart</a>
             <a href="#recursos" className="hover:text-cyan-400 transition">Recursos Gratuitos</a>
           </nav>
 
           <a 
-            href="#recursos" 
-            className="bg-cyan-500 hover:bg-cyan-400 text-slate-950 px-5 py-2.5 rounded-xl font-bold text-sm transition shadow-lg shadow-cyan-500/20"
+            href="https://wa.me/573215467418?text=Hola%20Academia%20ADEN,%20quisiera%20recibir%20informaci%C3%B3n" 
+            target="_blank"
+            rel="noopener noreferrer"
+            className="bg-emerald-500 hover:bg-emerald-400 text-slate-950 px-5 py-2.5 rounded-xl font-bold text-sm transition shadow-lg shadow-emerald-500/20 inline-flex items-center gap-2"
           >
-            Recursos Gratuitos
+            <MessageCircle className="w-4 h-4 fill-current" /> WhatsApp
           </a>
         </div>
       </header>

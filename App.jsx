@@ -156,71 +156,28 @@ export default function App() {
         </div>
       </section>
 
-      {/* 3. SHOWROOM Y DEMOS DE LA AGENCIA B2B */}
-      <section id="agencia" className="py-16 bg-slate-900/50 border-y border-slate-800/80">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-3xl mx-auto mb-12">
-            <span className="text-cyan-400 text-xs font-extrabold uppercase tracking-widest">Soluciones de Agencia B2B</span>
-            <h2 className="text-3xl sm:text-4xl font-black text-white mt-2">Demos e Infraestructura por Sector</h2>
-            <p className="text-slate-300 mt-4 text-base sm:text-lg leading-relaxed">
-              Diseñamos e implementamos sitios web de alto rendimiento, sistemas de captación de clientes y flujos comerciales automatizados con Inteligencia Artificial adaptados a la dinámica operativa de cada sector.
+      {/* 3. SECCIÓN AGENCIA ADEN DIGITAL */}
+      <section id="agencia" className="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="bg-gradient-to-r from-slate-900 via-slate-900 to-slate-900 border border-cyan-500/30 rounded-3xl p-8 sm:p-12 text-center relative overflow-hidden shadow-2xl">
+          <div className="absolute top-0 right-0 -mt-12 -mr-12 w-64 h-64 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none"></div>
+          <div className="max-w-3xl mx-auto relative z-10">
+            <span className="inline-block bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 text-xs font-bold px-4 py-1.5 rounded-full uppercase tracking-widest mb-4">
+              Soluciones B2B & Desarrollo Web
+            </span>
+            <h2 className="text-3xl sm:text-4xl font-black text-white mb-4">
+              ¿Prefieres que implementemos tu estrategia por ti?
+            </h2>
+            <p className="text-slate-300 text-base sm:text-lg leading-relaxed mb-8">
+              Además de nuestra academia de formación, a través de <strong className="text-white">Agencia ADEN Digital</strong> diseñamos sitios web de alta conversión, invitaciones interactivas para eventos, automatizaciones con Inteligencia Artificial y embudos de ventas personalizados para tu negocio.
             </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 flex flex-col justify-between hover:border-cyan-500/50 transition shadow-lg">
-              <div>
-                <div className="w-12 h-12 bg-pink-500/10 text-pink-400 rounded-xl flex items-center justify-center mb-4">
-                  <Sparkles className="w-6 h-6" />
-                </div>
-                <h3 className="text-xl font-bold text-white mb-2">Productos de Belleza & Cosmética</h3>
-                <p className="text-slate-400 text-sm mb-6">Plataforma e-commerce y vitrina digital optimizada para marcas de belleza, cuidado personal y cosmética.</p>
-              </div>
-              <a 
-                href="https://aura-skin-blush.vercel.app/" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-between w-full bg-slate-800 hover:bg-slate-700 text-cyan-400 font-semibold px-4 py-3 rounded-xl transition text-sm"
-              >
-                Ver Demo Interactivo <ExternalLink className="w-4 h-4" />
-              </a>
-            </div>
-
-            <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 flex flex-col justify-between hover:border-cyan-500/50 transition shadow-lg">
-              <div>
-                <div className="w-12 h-12 bg-cyan-500/10 text-cyan-400 rounded-xl flex items-center justify-center mb-4">
-                  <Briefcase className="w-6 h-6" />
-                </div>
-                <h3 className="text-xl font-bold text-white mb-2">Clínicas y Consultorios Odontológicos</h3>
-                <p className="text-slate-400 text-sm mb-6">Sistema de captación de pacientes, valoración digital y agendamiento directo a WhatsApp.</p>
-              </div>
-              <a 
-                href="https://demo-cl-nica-sonrisas-est-tica.vercel.app/" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-between w-full bg-slate-800 hover:bg-slate-700 text-cyan-400 font-semibold px-4 py-3 rounded-xl transition text-sm"
-              >
-                Ver Demo Interactivo <ExternalLink className="w-4 h-4" />
-              </a>
-            </div>
-
-            <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 flex flex-col justify-between hover:border-cyan-500/50 transition shadow-lg">
-              <div>
-                <div className="w-12 h-12 bg-emerald-500/10 text-emerald-400 rounded-xl flex items-center justify-center mb-4">
-                  <Target className="w-6 h-6" />
-                </div>
-                <h3 className="text-xl font-bold text-white mb-2">Centros de Estética y Bienestar</h3>
-                <p className="text-slate-400 text-sm mb-6">Sitio web especializado en servicios estéticos, catálogo de procedimientos y embudo de conversión.</p>
-              </div>
-              <a 
-                href="https://demo-estetica-aden.netlify.app/" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-between w-full bg-slate-800 hover:bg-slate-700 text-cyan-400 font-semibold px-4 py-3 rounded-xl transition text-sm"
-              >
-                Ver Demo Interactivo <ExternalLink className="w-4 h-4" />
-              </a>
-            </div>
+            <a 
+              href="https://agencia-aden.vercel.app/" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white font-bold px-8 py-4 rounded-xl transition shadow-lg shadow-cyan-500/25 text-base uppercase tracking-wider"
+            >
+              Visitar Agencia ADEN Digital <ExternalLink className="w-5 h-5" />
+            </a>
           </div>
         </div>
       </section>
